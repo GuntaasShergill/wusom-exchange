@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSOMExchange</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">WUSOM</span><span class="brand-rest">Exchange</span>
+    </div>
+    <div class="auth-area">
+      <button id="loginBtn" class="btn btn-outline">Sign in with WUSTL email</button>
+      <span id="userEmail" class="user-email hidden"></span>
+      <button id="logoutBtn" class="btn btn-outline hidden">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Lab &amp; office surplus, kept in the department</p>
+      <h1>Give it away. Someone down the hall needs it.</h1>
+      <p class="hero-sub">Post spare reagents, equipment, or furniture your lab no longer needs.
+        Anyone with a @wustl.edu account can claim it - free, first come, first served.</p>
+    </section>
+
+    <section class="panel" id="postPanel">
+      <h2>Post an item</h2>
+      <p class="hint hidden" id="postHint">Sign in with your WUSTL email to post an item.</p>
+      <form id="postForm">
+        <label>Title
+          <input type="text" id="title" required placeholder="e.g. Eppendorf centrifuge, 24-slot" />
+        </label>
+        <label>Category
+          <select id="category" required>
+            <option value="lab-equipment">Lab equipment</option>
+            <option value="reagents">Reagents / consumables</option>
+            <option value="furniture">Furniture</option>
+            <option value="electronics">Electronics</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>Description
+          <textarea id="description" rows="3" placeholder="Condition, pickup location, anything a claimer should know"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary" id="postSubmit">Post item</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Available items</h2>
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+          <option value="lab-equipment">Lab equipment</option>
+          <option value="reagents">Reagents / consumables</option>
+          <option value="furniture">Furniture</option>
+          <option value="electronics">Electronics</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <ul id="itemsList" class="items-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Weekly newsletter</h2>
+      <p>Get a digest of new items each week. Unsubscribe any time from a link in the email - no login needed for that part.</p>
+      <button id="subscribeBtn" class="btn btn-primary">Subscribe with my WUSTL email</button>
+      <p id="subscribeStatus" class="hint"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>WUSOMExchange &middot; a free item exchange marketplace for WashU School of Medicine</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

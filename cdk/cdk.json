@@ -1,0 +1,19 @@
+{
+  "app": "python3 app.py",
+  "context": {
+    "stage": "dev",
+    "@aws-cdk/core:newStyleStackSynthesis": true,
+    "@aws-cdk/aws-apigateway:disableCloudWatchRole": false
+  },
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.pyc",
+      "cdk.out",
+      ".venv",
+      "**/__pycache__"
+    ]
+  }
+}
