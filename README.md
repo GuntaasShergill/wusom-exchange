@@ -109,8 +109,6 @@ client -> Edit hosted UI settings)
 cdk deploy -c stage=dev
 ```
 
-`BucketDeployment` re-uploads `frontend/` and invalidates CloudFront automatically.
-
 ## Teardown
 
 ```bash
