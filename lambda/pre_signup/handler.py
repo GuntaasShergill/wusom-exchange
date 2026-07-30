@@ -9,9 +9,9 @@ ALLOWED_DOMAIN = "wustl.edu"
 
 def handler(event, context):
     email = event["request"]["userAttributes"].get("email", "")
-    if not email.lower().endswith(f"@{ALLOWED_DOMAIN}"):
-        raise Exception(f"Sign-up restricted to @{ALLOWED_DOMAIN} email addresses.")
+    #if not email.lower().endswith(f"@{ALLOWED_DOMAIN}"):
+        #raise Exception(f"Sign-up restricted to @{ALLOWED_DOMAIN} email addresses.")
 
-    event["response"]["autoConfirmUser"] = True
-    event["response"]["autoVerifyEmail"] = True
+    #event["response"]["autoConfirmUser"] = True
+    #event["response"]["autoVerifyEmail"] = True
     return event
