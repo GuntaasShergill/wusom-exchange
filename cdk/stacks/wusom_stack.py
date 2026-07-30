@@ -104,8 +104,8 @@ class WusomExchangeStack(Stack):
                 scopes=[cognito.OAuthScope.EMAIL, cognito.OAuthScope.OPENID, cognito.OAuthScope.PROFILE],
                 # CloudFront URL is only known after the distribution is created below;
                 # update these callback URLs post-deploy (see README "Wire up Cognito callback URLs").
-                callback_urls=["http://localhost:5500/index.html"],
-                logout_urls=["http://localhost:5500/index.html"],
+                callback_urls=["https://d2g4mhn6fhzhpy.cloudfront.net/index.html"],
+                logout_urls=["https://d2g4mhn6fhzhpy.cloudfront.net/index.html"],
             ),
         )
 
@@ -118,10 +118,10 @@ class WusomExchangeStack(Stack):
         # SES : identity for the "from" address used by the newsletter
         # ------------------------------------------------------------------
         sender_email = self.node.try_get_context("ses_sender_email") or "newsletter@example.com"
-        ses.EmailIdentity(
-            self, "NewsletterSenderIdentity",
-            identity=ses.Identity.email(sender_email),
-        )
+        #ses.EmailIdentity(
+        #    self, "NewsletterSenderIdentity",
+        #    identity=ses.Identity.email(sender_email),
+        #)
 
         # ------------------------------------------------------------------
         # Lambdas
@@ -180,7 +180,8 @@ class WusomExchangeStack(Stack):
                 allow_headers=["Content-Type", "Authorization"],
             ),
         )
-
+        newsletter_fn.add_environment("UNSUBSCRIBE_BASE_URL", f"{api.url}unsubscribe")
+        
         items_integration = apigw.LambdaIntegration(items_fn)
         items_resource = api.root.add_resource("items")
         items_resource.add_method("GET", items_integration)  # public browse
